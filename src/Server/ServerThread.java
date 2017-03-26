@@ -1,6 +1,5 @@
 package Server;
 
-import java.io.DataOutputStream;
 import java.io.PrintStream;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -16,9 +15,7 @@ public class ServerThread extends Thread{
 	}
 	
 	public void run(){
-		for (int i = 0 ; i < 4 ;i++){
-			
-		}
+		
 	}
 	
 	

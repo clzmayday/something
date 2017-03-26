@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Scanner;
 
 
 
@@ -13,6 +14,8 @@ public class Test{
    	int[]pos=new int[4];
    	 int dice=0;
    	 int player;
+   	 Scanner in = new Scanner(System.in);
+   	 boolean game = true;
    	 
    	 public void board(){
    		
@@ -43,17 +46,23 @@ public void Player(){
 		try{
    			
    			Thread.sleep(500);
-   			for(int i=0;i<4;i++){
+   			while(game){
+   				System.out.println("Who:");
+   				
+   				int a = in.nextInt();
    				int num=dice;
-   			
-	     		while(num>0){
-	       			gui.setPosition(i,pos[i]++);
-	       			num--;
-	           	  }
-	     		num = dice;
-	   			Thread.sleep(100);
+   				System.out.println(num);
+   				while(num>0){
+   					gui.setPosition(a,pos[a]++);
+   					num--;
+   				}
+   				num = dice;
+   				status();
+   				Thread.sleep(100);
+   					
      	
- 			}
+   			}
+   			
      	  }catch(Exception ex){ex.printStackTrace();}
 		
   }
@@ -73,6 +82,18 @@ public void Player(){
 	        t.Player();
 	        
    }
+   
+   private void status(){
+	   for(int i = 0; i < 4; i++){
+		   if(pos[i] == 100){
+			   jt.setText(i + " Win!");
+			   game = false;
+		   }
+		   else{
+			   game = true;
+		   }
+	   }	
+   }
    private class Dice implements ActionListener{
      	   @Override	
      		
@@ -82,6 +103,7 @@ public void Player(){
      	   if(e.getSource()==b){
      			
      			dice=(int)(Math.random()*6+1);
+     			jt.setText("");
      			jt.setText(jt.getText()+"The number you rolled is:" +dice);
      			
      		    	

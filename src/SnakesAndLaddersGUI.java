@@ -29,6 +29,9 @@ public class SnakesAndLaddersGUI extends JPanel implements Runnable{
                 }
 
         }
+        public int getPosition(int playerno){
+        	return players[playerno];
+        }
         public void paint(Graphics g){
                 update(g);
         }
